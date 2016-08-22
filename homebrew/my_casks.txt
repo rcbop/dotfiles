@@ -1,0 +1,14 @@
+charles
+fing
+firefox
+gimp
+iterm2
+meld
+osxfuse
+owasp-zap
+spectacle
+spotify
+sqlitebrowser
+vagrant
+virtualbox
+vlc
