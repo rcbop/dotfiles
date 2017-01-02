@@ -1,10 +1,13 @@
+START_TIME=$SECONDS
+# If you come from bash you might have to change your $PATH.
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/rogerio.c.peixoto/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pygmalion"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -49,57 +52,51 @@ ZSH_THEME="pygmalion"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#plugins=(git)
 
 # User configuration
 
-#export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='mvim'
- fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Use atom for editing config files
-alias zshconfig="atom ~/.zshrc"
-alias envconfig="atom ~/env.sh"
-alias speedtest='curl -o /dev/null http://speedtest.wdc01.softlayer.com/downloads/test10.zip'
-alias cm='command'
-alias dsmall='docker stop $(command docker ps -aq)'
-alias drmall='docker rm $(command docker ps -aq)'
-
-# oh my zsh plugins for auto completion and others features
-plugins=(git colored-man-pages colorize vagrant brew ruby docker)
+plugins=(git colored-man-pages zsh-navigation-tools colorize ruby xcode)
 plugins+=(gradle rvm rails bundler gem osx pod)
-plugins+=(bower cp go node npm aws)
+plugins+=(bower cp node npm aws)
 plugins+=(zsh-syntax-highlighting encode64)
-plugins+=(zsh-completions mvn zsh-navigation-tools)
-
-fpath=(~/.zsh/completion $fpath)
+plugins+=(zsh-completions mvn)
 
 autoload -Uz compinit && compinit -i
 
-# load env.ssh - separated file for heavy lifting and env isolationh
-. ~/.env.sh
-
-#awesomeness
-python .cowzen.py | cowsay -f dragon
+source ~/.env.sh
 
 source $ZSH/oh-my-zsh.sh
+
+python .cowzen.py | cowsay -f dragon
+
+#source $ZSH/oh-my-zsh.sh
+ELAPSED_TIME=$(($SECONDS - $START_TIME))
+
+echo "Finished Loading $ELAPSED_TIME s"

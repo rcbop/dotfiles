@@ -1,6 +1,2 @@
 #!/bin/bash
-for f in 
-do
-    ln -s "$f" "$HOME/.${f##*/}"
-done
-
+for f in "$PWD/files/"; do ln -s "$f" "$HOME/.${f}"; done

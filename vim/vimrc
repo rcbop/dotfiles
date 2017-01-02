@@ -6,8 +6,6 @@ set backspace=2
 " Enable syntax highlighting
 syntax on
 
-set relativenumber
-
 " Indentation
 set autoindent
 filetype plugin indent on
@@ -41,23 +39,15 @@ inoremap <silent> <C-a> <esc>^i
 inoremap <silent> <C-e> <esc>$i
 
 " Emacs-style line cutting
-nnoremap <silent> <C-k> d$
-vnoremap <silent> <C-k> d$
-inoremap <silent> <C-k> <esc>d$i
+nnoremap <C-k> d$
+vnoremap <C-k> d$
+inoremap <C-k> <esc>d$i
 
 " Fix Alt key in MacVIM GUI
 " TODO - Fix in MacVIM terminal
 if has("gui_macvim")
   set macmeta
 endif
-
-" Emacs-style start of file / end of file navigation
-nnoremap <silent> <M-<> gg
-nnoremap <silent> <M->> G$
-vnoremap <silent> <M-<> gg
-vnoremap <silent> <M->> G$
-inoremap <silent> <M-<> <esc>ggi
-inoremap <silent> <M->> <esc>G$i
 
 " Do not attempt to fix style on paste
 " Normally we would just `set paste`, but this interferes with other aliases.
@@ -140,8 +130,8 @@ nnoremap <silent> <C-w><Right> :<C-u>call <SID>JumpWithWrap('l', 'h')<CR>
 "endfunction
 
 "autocmd VimEnter * call StartUp()
-au VimEnter *  NERDTree
-autocmd VimEnter * wincmd p
+"au VimEnter *  NERDTree
+"autocmd VimEnter * wincmd p
 
 
 "
@@ -168,10 +158,19 @@ call vundle#begin()
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'mcandre/Conque-Shell'
   Plugin 'elubow/cql-vim'
-  Plugin 'scrooloose/nerdtree'
-  Plugin 'Xuyuanp/nerdtree-git-plugin'
+ " Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'altercation/vim-colors-solarized'
 call vundle#end()
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set number
+      else
+        set relativenumber
+      endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
 
 " Enable Powerline fonts for airline
 let g:airline_powerline_fonts = 1
