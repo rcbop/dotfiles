@@ -38,6 +38,13 @@ vnoremap <silent> <C-e> $
 inoremap <silent> <C-a> <esc>^i
 inoremap <silent> <C-e> <esc>$i
 
+inoremap <C-s> <esc>:w<cr>                 " save files
+nnoremap <C-s> :w<cr>
+inoremap <C-d> <esc>:xa!<cr>               " save and exit
+nnoremap <C-d> :xa!<cr>
+inoremap <C-w> <esc>:qa!<cr>               " quit discarding changes
+nnoremap <C-w> :qa!<cr>
+
 " Emacs-style line cutting
 nnoremap <C-k> d$
 vnoremap <C-k> d$
@@ -123,15 +130,15 @@ nnoremap <silent> <C-w><Down> :<C-u>call <SID>JumpWithWrap('j', 'k')<CR>
 nnoremap <silent> <C-w><Up> :<C-u>call <SID>JumpWithWrap('k', 'j')<CR>
 nnoremap <silent> <C-w><Right> :<C-u>call <SID>JumpWithWrap('l', 'h')<CR>
 
-"function! StartUp()
-"  if 0 == argc()
-"    NERDTree
-"  end
-"endfunction
+function! StartUp()
+  if 0 == argc()
+    NERDTree
+  end
+endfunction
 
-"autocmd VimEnter * call StartUp()
-"au VimEnter *  NERDTree
-"autocmd VimEnter * wincmd p
+autocmd VimEnter * call StartUp()
+au VimEnter *  NERDTree
+autocmd VimEnter * wincmd p
 
 
 "
@@ -158,8 +165,10 @@ call vundle#begin()
   Plugin 'editorconfig/editorconfig-vim'
   Plugin 'mcandre/Conque-Shell'
   Plugin 'elubow/cql-vim'
- " Plugin 'Xuyuanp/nerdtree-git-plugin'
   Plugin 'altercation/vim-colors-solarized'
+  Plugin 'Filesearch'
+  Plugin 'SearchComplete'
+  Plugin 'scrooloose/nerdtree'
 call vundle#end()
 
 function! NumberToggle()
