@@ -44,6 +44,7 @@ inoremap <C-d> <esc>:xa!<cr>               " save and exit
 nnoremap <C-d> :xa!<cr>
 inoremap <C-w> <esc>:qa!<cr>               " quit discarding changes
 nnoremap <C-w> :qa!<cr>
+nnoremap <C-o> :CommandT<enter>
 
 " Emacs-style line cutting
 nnoremap <C-k> d$
@@ -105,6 +106,9 @@ let ruby_fold=1                       " Ruby
 let sh_fold_enabled=1                 " sh
 let vimsyn_folding='af'               " Vim script
 let xml_syntax_folding=1              " XML
+
+" ignore files
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg
 
 "
 " Wrap window-move-cursor
@@ -169,6 +173,9 @@ call vundle#begin()
   Plugin 'Filesearch'
   Plugin 'SearchComplete'
   Plugin 'scrooloose/nerdtree'
+  "Plugin 'vim-scripts/L9'
+  "Plugin 'vim-scripts/FuzzyFinder'
+  Plugin 'wincent/command-t'
 call vundle#end()
 
 function! NumberToggle()
