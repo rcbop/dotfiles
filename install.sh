@@ -1,5 +1,5 @@
 #!/bin/bash
-ln -nfs ./vim/vimrc ~/.vimrc
-ln -nfs ./otherfiles/cowzen.py ~/cowzen.py
-ln -nfs ./zsh/env.sh ~/.env.sh
-ln -nfs ./zsh/zshrc ~/.zshrc
+ln -nfs $PWD/vim/vimrc ~/.vimrc
+ln -nfs $PWD/otherfiles/cowzen.py ~/cowzen.py
+ln -nfs $PWD/zsh/env.sh ~/.env.sh
+ln -nfs $PWD/zsh/zshrc ~/.zshrc
