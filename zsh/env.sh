@@ -26,6 +26,17 @@ function r() { grep "$1" ${@:2} -R . }
 #mkdir and cd
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 
+# Make man command more useful by having it fall back on the help command
+function man() {
+    /usr/bin/man $@ || (help $@ 2> /dev/null && help $@ | less)
+}
+
+# ls -l does not print the size of the directory contents. This function does:
+function sz() {
+    no_trailing_slash=${1%/}
+      du -sh $no_trailing_slash/*
+}
+
 #function dmset() {
 #  COUNT=`command docker-machine ls | grep "Running" | wc -l`
 #  if [[ "${COUNT// /}" == "1" ]]
@@ -70,13 +81,21 @@ function get-device-screenshot() {
 
 alias dmls='docker-machine ls'
 
-# Aliases
-alias cppcompile='c++ -std=c++11 -stdlib=libc++'
-alias cwd='printf "%q\n" "$(pwd)" | pbcopy | echo pwd copied to clipboard'
-
 # Init jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"
-alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
 
+# Aliases
+alias cppcompile='c++ -std=c++11 -stdlib=libc++'
+alias cwd='printf "%q\n" "$(pwd)" | pbcopy | echo pwd copied to clipboard'
+alias grep='grep -I --color'
+alias x='exit'
+alias .='cd ..'
+alias ..='cd ../..'
+alias ...='cd ../../..'
+alias ....='cd ../../../..'
+alias .....='cd ../../../../..'
+alias ......='cd ../../../../../..'
+alias .......='cd ../../../../../../..'
+alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'

@@ -9,6 +9,7 @@ syntax on
 " Indentation
 set autoindent
 filetype plugin indent on
+set shiftwidth=4
 
 " Use OS clipboard for copypasta
 set clipboard=unnamed
@@ -42,8 +43,6 @@ inoremap <C-s> <esc>:w<cr>                 " save files
 nnoremap <C-s> :w<cr>
 inoremap <C-d> <esc>:xa!<cr>               " save and exit
 nnoremap <C-d> :xa!<cr>
-inoremap <C-w> <esc>:qa!<cr>               " quit discarding changes
-nnoremap <C-w> :qa!<cr>
 nnoremap <C-o> :CommandT<enter>
 
 " Emacs-style line cutting
@@ -176,6 +175,7 @@ call vundle#begin()
   "Plugin 'vim-scripts/L9'
   "Plugin 'vim-scripts/FuzzyFinder'
   Plugin 'wincent/command-t'
+  Plugin 'pangloss/vim-javascript'
 call vundle#end()
 
 function! NumberToggle()
