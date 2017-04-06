@@ -10,7 +10,6 @@ syntax on
 set autoindent
 filetype plugin indent on
 set shiftwidth=4
-
 " Use OS clipboard for copypasta
 set clipboard=unnamed
 
@@ -49,6 +48,12 @@ nnoremap <C-o> :CommandT<enter>
 nnoremap <C-k> d$
 vnoremap <C-k> d$
 inoremap <C-k> <esc>d$i
+
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+inoremap <Tab> <C-N>
+inoremap <S-Tab> <C-P>
 
 " Fix Alt key in MacVIM GUI
 " TODO - Fix in MacVIM terminal
@@ -176,6 +181,8 @@ call vundle#begin()
   "Plugin 'vim-scripts/FuzzyFinder'
   Plugin 'wincent/command-t'
   Plugin 'pangloss/vim-javascript'
+  Plugin 'udalov/kotlin-vim'
+  Plugin 'mileszs/ack.vim'
 call vundle#end()
 
 function! NumberToggle()
@@ -221,3 +228,8 @@ let g:ConqueTerm_CWInsert = 1
 " Replace shell with Conque-Shell
 set nocp
 cabbrev sh sh<C-\>esubstitute(getcmdline(), '^sh', 'ConqueTerm bash', '')<cr>
+
+augroup filetype                                                     
+   au BufRead,BufNewFile *.flex,*.jflex    set filetype=jflex         
+augroup END                                                          
+au Syntax jflex    so ~/.vim/syntax/jflex.vim    
