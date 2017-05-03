@@ -79,7 +79,7 @@ function get-device-screenshot() {
   adb -d shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > $1
 }
 
-alias dmls='docker-machine ls'
+#alias dmls='docker-machine ls'
 
 # Init jenv
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
@@ -99,3 +99,4 @@ alias .....='cd ../../../../..'
 alias ......='cd ../../../../../..'
 alias .......='cd ../../../../../../..'
 alias jenv_set_java_home='export JAVA_HOME="$HOME/.jenv/versions/`jenv version-name`"'
+
