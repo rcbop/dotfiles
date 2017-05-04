@@ -164,7 +164,7 @@ call vundle#begin()
   Plugin 'bling/vim-airline'
   Plugin 'vim-airline/vim-airline-themes'
   Plugin 'benjaminwhite/Benokai'
-  Plugin 'fsouza/go.vim'
+  "Plugin 'fsouza/go.vim'
   Plugin 'wting/rust.vim'
   Plugin 'godlygeek/tabular'
   Plugin 'plasticboy/vim-markdown'
