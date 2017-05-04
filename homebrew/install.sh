@@ -23,4 +23,7 @@ then
 
 fi
 
+xargs brew install < my_brews.txt
+xargs brew cask install < my_casks.txt
+
 exit 0
